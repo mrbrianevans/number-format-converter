@@ -1,18 +1,18 @@
-import express, {Application, Request, Response, NextFunction} from "express";
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const app: Application = express();
-
+const app = express_1.default();
 app.use(cors());
 app.use(bodyParser.json());
-app.get('/', ((req: Request, res: Response, next: NextFunction) => {
-    res.send("Use post request instead")
-}))
-
+app.get('/', ((req, res, next) => {
+    res.send("Use post request instead");
+}));
 // app.use(express.urlencoded({extended: false}));
-
-
 // takes an array of strings, the strings are the pages we want our backend to allow access to:
 // var allowedOrigins = ['http://localhost:3000'];
 // app.use(cors({
@@ -24,11 +24,9 @@ app.get('/', ((req: Request, res: Response, next: NextFunction) => {
 //     return callback(null, true);
 //   }
 // }));
-
-
 // connect the server to the routes file
 require("./app/routes/index.routes")(app);
 app.listen(5000, () => console.log("server started")); // start the server on port 5K
 app.on('data', (data) => {
-    console.log(data)
-})
+    console.log(data);
+});
