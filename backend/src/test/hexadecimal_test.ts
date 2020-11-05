@@ -1,7 +1,7 @@
 import 'mocha'
 import {it} from "mocha"
 import {expect} from "chai"
-import HexadecimalModel from "../src/app/models/HexadecimalModel";
+import HexadecimalModel from "../app/models/HexadecimalModel";
 
 // Hex conversion test suite, encoding to hexadecimal
 describe('Convert decimal to hexadecimal', () => {

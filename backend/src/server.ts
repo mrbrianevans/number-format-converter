@@ -27,7 +27,7 @@ app.get('/', ((req, res, next) => {
 
 
 // connect the server to the routes file
-require("./app/routes/index.routes.ts")(app);
+require("./app/routes/index.routes")(app);
 app.listen(5000, () => console.log("server started")); // start the server on port 5K
 app.on('data', (data) => {
     console.log(data)

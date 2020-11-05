@@ -1,5 +1,5 @@
-import {BinaryModel} from "../models/BinaryModel";
-import {HexadecimalModel} from "../models/HexadecimalModel";
+import BinaryModel from "../models/BinaryModel";
+import HexadecimalModel from "../models/HexadecimalModel";
 import {IModel} from "../models/IModel";
 
 // this object maps each number type to the model associated with it

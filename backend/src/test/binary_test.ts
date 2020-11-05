@@ -1,7 +1,7 @@
 import 'mocha'
 import {it} from "mocha"
 import {expect} from "chai"
-import BinaryModel from "../src/app/models/BinaryModel";
+import BinaryModel from "../app/models/BinaryModel";
 
 // Binary conversion test suite, encoding to binary
 describe('Convert decimal to binary', () => {
