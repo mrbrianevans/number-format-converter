@@ -6,20 +6,25 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "ssh2": "^0.8.9",
-    "ts-node": "^8.10.2",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.3"
+    "ssh2": "^0.8.9"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
     "@types/express": "^4.17.8",
+    "@types/mocha": "^8.0.3",
     "@types/node": "^14.0.27",
-    "nodemon": "^2.0.6"
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6",
+    "ts-node": "^8.10.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "test": "mocha -r ts-node/register test/*.ts"
   },
   "repository": {
     "type": "git",

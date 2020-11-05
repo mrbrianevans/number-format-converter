@@ -1,7 +1,7 @@
 import {IModel} from "./IModel";
 
 // convert between binary and decimal
-export const BinaryModel: IModel = {
+const BinaryModel: IModel = {
     encode: (decimal: number) => {
 
         return "10111"
@@ -11,3 +11,5 @@ export const BinaryModel: IModel = {
         return 0
     }
 }
+
+export default BinaryModel
