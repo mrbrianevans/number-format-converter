@@ -8,7 +8,11 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+    
+defaults:
+  run:
+    working-directory: backend
+    
 jobs:
   build:
 
@@ -24,6 +28,5 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd backend
     - run: npm run build
     - run: npm test
