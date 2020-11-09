@@ -1,14 +1,14 @@
 import express, {Application, Request, Response, NextFunction} from "express";
-
+const functions = require('firebase-functions');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const app: Application = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.get('/', ((req: Request, res: Response, next: NextFunction) => {
-    res.send("Use post request instead")
-}))
+// app.get('/', ((req: Request, res: Response, next: NextFunction) => {
+//     res.send("Use post request instead")
+// }))
 
 // app.use(express.urlencoded({extended: false}));
 
@@ -28,7 +28,8 @@ app.get('/', ((req: Request, res: Response, next: NextFunction) => {
 
 // connect the server to the routes file
 require("./app/routes/index.routes")(app);
-app.listen(5000, () => console.log("server started")); // start the server on port 5K
-app.on('data', (data) => {
-    console.log(data)
-})
+// app.listen(5000, () => console.log("server started")); // start the server on port 5K
+// app.on('data', (data) => {
+//     console.log(data)
+// })
+exports.api = functions.https.onRequest(app)

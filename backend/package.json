@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "The backend of the number format converter",
-  "main": "server.js",
+  "main": "./src/server.ts",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -24,7 +24,8 @@
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc -p .",
-    "test": "mocha -r ts-node/register src/test/*.ts"
+    "test": "mocha -r ts-node/register src/test/*.ts",
+       "lint": "tslint 'src/**/*.ts?(x)'"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/mrbrianevans/number-format-converter/issues"
   },
-  "homepage": "."
+   "engines": {
+        "node": "8"
+      }
+
 }

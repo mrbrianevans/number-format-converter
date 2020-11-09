@@ -4,14 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const functions = require('firebase-functions');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const app = express_1.default();
 app.use(cors());
 app.use(bodyParser.json());
-app.get('/', ((req, res, next) => {
-    res.send("Use post request instead");
-}));
+// app.get('/', ((req: Request, res: Response, next: NextFunction) => {
+//     res.send("Use post request instead")
+// }))
 // app.use(express.urlencoded({extended: false}));
 // takes an array of strings, the strings are the pages we want our backend to allow access to:
 // var allowedOrigins = ['http://localhost:3000'];
@@ -26,7 +27,8 @@ app.get('/', ((req, res, next) => {
 // }));
 // connect the server to the routes file
 require("./app/routes/index.routes")(app);
-app.listen(5000, () => console.log("server started")); // start the server on port 5K
-app.on('data', (data) => {
-    console.log(data);
-});
+// app.listen(5000, () => console.log("server started")); // start the server on port 5K
+// app.on('data', (data) => {
+//     console.log(data)
+// })
+exports.api = functions.https.onRequest(app);
