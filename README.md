@@ -19,3 +19,5 @@ Open source project to convert numbers between different formats.
 ## Project directory structure
  - frontend
  - backend
+ - dist
+ - test

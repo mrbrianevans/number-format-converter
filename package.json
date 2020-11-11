@@ -1,0 +1,29 @@
+{
+  "name": "number-format-converter",
+  "version": "1.0.0",
+  "description": "client and server for converting number formats",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "test": "mocha -r ts-node/register test/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrbrianevans/number-format-converter.git"
+  },
+  "keywords": [
+    "binary",
+    "hexadecimal",
+    "numerals",
+    "base64"
+  ],
+  "author": "Brian Evans & Daniel Mamphekgo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrbrianevans/number-format-converter/issues"
+  },
+  "homepage": "https://github.com/mrbrianevans/number-format-converter#readme"
+}
