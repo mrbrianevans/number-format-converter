@@ -12,7 +12,14 @@ const convert = (inputNumber: number, inputFormat: string, outputFormat: string)
                 "inputFormat": inputFormat,
                 "outputFormat": outputFormat
             }),
-            mode: "no-cors"
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(r => {
+            console.log(r.body) // log response
+            return r
         })
         .then(r => r.json())
     //// uncomment for dev testing without api response
