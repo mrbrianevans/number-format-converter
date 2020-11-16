@@ -7,15 +7,19 @@ import {converter} from "./controllers/corrospondingFunctions";
 //
 
 export const convert = functions.https.onRequest((request, response) => {
-  functions.logger.info("Convert number function called", {structuredData: true});
+  functions.logger.info("Convert number function called with " + request.method, {structuredData: true});
   response.setHeader("Access-Control-Allow-Origin", "*")
-  if (request.method === "post" && request.is("json")) { // valid request format POST JSON
-
+  if (request.method.toLowerCase() !== "post") response.status(405).send("Only POST method allowed")
+  else if (!request.is("json")) {
+    try {
+      response.status(400).send("Request body must be JSON not " + JSON.stringify(JSON.parse(request.body)))
+    } catch (e) {
+      response.status(400).send("Could not interpret JSON: " + request.body.keys().toString())
+    }
+  } else { // valid request format POST JSON
     //calculate answer
     const answer: string = converter(request.body.inputNumber, request.body.inputFormat, request.body.outputFormat)
     // Send response
     response.send(JSON.stringify({answer: answer}))
-  } else {
-    response.send("Invalid request")
   }
 });
