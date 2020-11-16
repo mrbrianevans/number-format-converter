@@ -18,7 +18,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "outDir": "../dist/public"
+    "outDir": "build"
   },
   "include": [
     "src"

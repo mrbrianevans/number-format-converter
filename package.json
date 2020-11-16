@@ -2,13 +2,16 @@
   "name": "number-format-converter",
   "version": "1.0.0",
   "description": "client and server for converting number formats",
-  "main": "dist/index.js",
+  "main": "frontend/build/index.html",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "start": "node dist/index.js",
-    "test": "mocha -r ts-node/register test/*.ts"
+    "start": "firebase emulators:start",
+    "test": "mocha -r ts-node/register test/*.ts",
+    "client-build": "cd frontend && npm run build",
+    "functions-build": "cd functions && npm run build",
+    "build": "npx concurrently \"npm run client-build\" \"npm run functions-build\""
   },
   "repository": {
     "type": "git",

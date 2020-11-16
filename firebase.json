@@ -1,13 +1,12 @@
 {
   "functions": {
     "predeploy": [
-      "npm --prefix ./backend/ run lint",
-      "npm --prefix ./backend/ run build"
-    ],
-    "source": "backend"
+      "npm --prefix \"$RESOURCE_DIR\" run lint",
+      "npm --prefix \"$RESOURCE_DIR\" run build"
+    ]
   },
   "hosting": {
-    "public": "backend/public",
+    "public": "frontend/build",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -15,12 +14,8 @@
     ],
     "rewrites": [
       {
-        "source": "/",
+        "source": "**",
         "destination": "/index.html"
-      },
-      {
-        "source": "/convert",
-        "function": "convert"
       }
     ]
   }

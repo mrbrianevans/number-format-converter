@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9731f397-581d-4850-be37-472c7cc9bdb4" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Brian Evans &lt;ebrian101@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="JupyterTrust" id="9ea112e3-9520-4457-90b7-656d6f4781f4" />
+  <component name="ProjectId" id="1jpMvBps5f5Vb6WPIrUYPH3PYuZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="ts.external.directory.path" value="C:\Users\bme\AppData\Roaming\npm\node_modules\typescript\lib" />
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/frontend/public/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9731f397-581d-4850-be37-472c7cc9bdb4" name="Default Changelist" comment="" />
+      <created>1604496807307</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604496807307</updated>
+      <workItem from="1604496808420" duration="614000" />
+      <workItem from="1604503650835" duration="3232000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial frontend from create react app">
+      <created>1604497027583</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604497027583</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial frontend from create react app">
+      <created>1604509005219</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604509005220</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/App.jsx" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial frontend from create react app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial frontend from create react app" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="704" y="191" key="CommitChangelistDialog2" timestamp="1604509004470">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="704" y="191" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1604509004470" />
+    <state width="2151" height="325" key="GridCell.Tab.0.bottom" timestamp="1604509016317">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="325" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1604509016317" />
+    <state width="2151" height="325" key="GridCell.Tab.0.center" timestamp="1604509016316">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="325" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1604509016316" />
+    <state width="2151" height="325" key="GridCell.Tab.0.left" timestamp="1604509016316">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="325" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1604509016316" />
+    <state width="2151" height="325" key="GridCell.Tab.0.right" timestamp="1604509016316">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2151" height="325" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1604509016316" />
+    <state x="825" y="300" key="RollbackChangesDialog" timestamp="1604507161067">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="825" y="300" key="RollbackChangesDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1604507161067" />
+    <state x="606" y="242" key="SettingsEditor" timestamp="1604506733447">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="606" y="242" key="SettingsEditor/0.0.2194.1194@0.0.2194.1194" timestamp="1604506733447" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1604497040988">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1604497040988" />
+  </component>
+</project>
