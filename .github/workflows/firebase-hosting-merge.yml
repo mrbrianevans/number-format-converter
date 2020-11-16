@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install functions dependencies
+#       - name: Install functions dependencies
       - run: |
           cd functions
           npm ci
-      - name: Install frontend dependencies
+#       - name: Install frontend dependencies
       - run: |
           cd frontend
           npm ci
