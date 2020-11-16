@@ -8,11 +8,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    
-defaults:
-  run:
-    working-directory: backend
-    
+
 jobs:
   build:
 
@@ -20,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x, 14.x]
+        node-version: [ 12.x ]
 
     steps:
     - uses: actions/checkout@v2
@@ -30,4 +26,3 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build
-    - run: npm test
