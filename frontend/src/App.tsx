@@ -14,16 +14,82 @@ const App: React.FC = () => {
     )
 
     return (
-        <div className="">
+        <div className="app">
+            <div className="container">
+                <div className="d-flex justify-content-center">
+                    <h1 className="text">Number-Format-Converter</h1>
+                </div>
+            </div>
+
+            <hr />
+
             <div className="container">
                 <div className="row">
-                    <input type={"text"} onChange={(inputEvent) => {
-                        updateInputNumber(inputEvent.target.value)
-                    }} value={inputNumber}/>
-                    <p>
-                        The converted number is: {outputNumber || " not worked out yet"}
-                    </p>
-                </div> {/*end of teh row*/}
+                    <div className="col-md-5">
+                        <form>
+                             <div className="form-group">
+                                <label className="text" >Example select</label>
+                                <select className="form-control" id="select1">
+                                    <option className="dropdown-item" value="binary">Binary</option>
+                                    <option className="dropdown-item" value="octal">Octal</option>
+                                    <option className="dropdown-item" value="decimal">Decimal</option>
+                                    <option className="dropdown-item" value="hexadecimal">Hexadecimal</option>
+                                    <option className="dropdown-item" value="base12">Base12</option>
+                                    <option className="dropdown-item" value="base64">Base64</option>
+                                    <option className="dropdown-item" value="romannumeral">Roman Numeral</option>
+                                    <option className="dropdown-item" value="english">English</option>
+                                </select>
+                              </div>
+
+                              <div className="form-group">
+                                <label className="text">Example textarea</label>
+                                <textarea className="form-control" rows={1}></textarea>
+                              </div>
+                        </form>
+                    </div>
+
+                    <div className="col-md-1">
+                        <div className="container">
+                            <div className="d-flex justify-content-center">
+                                <h3 className="text">to</h3>
+                            </div>
+                        </div>    
+                    </div>
+
+                    <div className="col-md-5">
+                        <form>
+                             <div className="form-group">
+                                <label className="text" >Example select</label>
+                                <select className="form-control" id="select2">
+                                    <option className="dropdown-item" value="binary">Binary</option>
+                                    <option className="dropdown-item" value="octal">Octal</option>
+                                    <option className="dropdown-item" value="decimal">Decimal</option>
+                                    <option className="dropdown-item" value="hexadecimal">Hexadecimal</option>
+                                    <option className="dropdown-item" value="base12">Base12</option>
+                                    <option className="dropdown-item" value="base64">Base64</option>
+                                    <option className="dropdown-item" value="romannumeral">Roman Numeral</option>
+                                    <option className="dropdown-item" value="english">English</option>
+                                </select>
+                              </div>
+
+                              <div className="form-group">
+                                <label className="text">Example textarea</label>
+                                <textarea className="form-control" rows={1}></textarea>
+                              </div>
+                        </form>
+                    </div>
+
+                   {
+                       /*<input type={"text"} onChange={(inputEvent) => {
+                            updateInputNumber(inputEvent.target.value)
+                        }} value={inputNumber}/>
+                    */} 
+                    {/*
+                        <p>
+                            The converted number is: {outputNumber || " not worked out yet"}
+                        </p>
+                    */}
+                </div> {/*end of the row*/}
            
                 
             </div>{/*end of the container*/}

@@ -7,13 +7,24 @@ const Footer: React.FC = () => {
         
         <footer className="footer">
             <div className="container text-center">
-                 <a
-                    className="App-link"
-                    href="https://github.com/mrbrianevans/number-format-converter"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Repository
-                </a>
+              <div className="row">
+                <div className="col-md-6">
+                    <a
+                      className="App-link"
+                      href="https://github.com/mrbrianevans/number-format-converter"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      View Repository
+                  </a>
+                </div>
+
+                <div className="col-md-6">
+                  Developed & Designed by <a href="http://brianevans.tech/">Brian Evans</a> and <a href="https://macbase.co.za/">Daniel Mamphekgo</a> 
+                </div>  
+              </div>
+
+
+                 
             </div>
       </footer>
   );
