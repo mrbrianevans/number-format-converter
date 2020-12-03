@@ -18,17 +18,14 @@ const App: React.FC = () => {
     )
 
     const handleTextAreaChange = (e: any) =>{
-        // console.log(e.target.value);
         updateInputNumber(e.target.value);
     }
 
     const handleSelectChange1 = (e: any) =>{
-        // console.log(e.target.value);
         setFromFormat(e.target.value);
     }
 
     const handleSelectChange2 = (e: any) =>{
-        // console.log(e.target.value);
         setToFormat(e.target.value);
     }
 
@@ -96,11 +93,7 @@ const App: React.FC = () => {
                         </form>
                     </div>
 
-                   {
-                       /*<input type={"text"} onChange={(inputEvent) => {
-                            updateInputNumber(inputEvent.target.value)
-                        }} value={inputNumber}/>
-                    */} 
+               
                     {/*
                         <p>
                             The converted number is: {outputNumber || " not worked out yet"}
