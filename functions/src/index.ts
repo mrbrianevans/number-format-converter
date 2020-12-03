@@ -4,21 +4,19 @@ import {converter, functionsMapper} from "./controllers/corrospondingFunctions";
 // // Backend code must be called like this to respond to requests
 // // Firebase Functions Docs:
 // // https://firebase.google.com/docs/functions/typescript
-//
+
 
 export const convert = functions.https.onRequest((request, response) => {
   functions.logger.info("Convert number function called with " + request.method, {structuredData: true});
   response.setHeader("Access-Control-Allow-Origin", "*")
   if (request.method.toLowerCase() !== "post") response.status(405).send("Only POST method allowed")
   else if (!request.is("json")) {
-    try {
-      response.status(400).send("Request body must be JSON not " + JSON.stringify(JSON.parse(request.body)))
-    } catch (e) {
-      response.status(400).send("Could not interpret JSON: " + request.body.keys().toString())
-    }
+    response.status(400).send("JSON header missing. Add to you request headers Content-Type: application/json")
+  } else if (typeof request.body !== "object") {
+    response.status(400).send("Could not interpret JSON: " + JSON.stringify(request.body))
   } else { // valid request format POST JSON
     //futher validation:
-    let errorMessages: string[] = []
+    const errorMessages: string[] = []
     if (!request.body.inputNumber) {
       errorMessages.push("Input number not specified")
     } else if (typeof request.body.inputNumber !== "string") {

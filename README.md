@@ -36,11 +36,36 @@ The endpoint to convert a number is
 
 `https://us-central1-number-format-converter-19ca7.cloudfunctions.net/convert`
 
-The expected `POST` request body is in this format:
-```json
+The method must be POST, and the request body must be JSON.
+
+A valid request looks like this:
+```http request
+POST https://us-central1-number-format-converter-19ca7.cloudfunctions.net/convert
+Content-Type: application/json
+
 {
-  "inputNumber": "100011",
-  "inputFormat": "binary",
-  "outputFormat": "hex"
+  "inputNumber": "FF",
+  "inputFormat": "hexadecimal",
+  "outputFormat": "binary"
 }
 ```
+The typical response is in this format:
+```json
+{
+  "answer":"10111"
+}
+```
+If the request is a POST request with JSON body, 
+but the actual values are not valid, an error list will be 
+returned in this format:
+```json
+{
+  "errors": [
+    "Input number format not valid. Should be string"
+  ]
+}
+```
+
+If the request is not using the POST method, the API will respond with a 405 error.
+
+If the request body is not valid JSON (or a `application/json` header is absent), the API will respond with a 400 error.

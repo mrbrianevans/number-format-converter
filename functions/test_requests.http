@@ -1,0 +1,23 @@
+// This is to test on local host
+POST http://localhost:5001/number-format-converter-19ca7/us-central1/convert
+Content-Type: application/json
+
+{
+  "inputNumber": "g",
+  "inputFormat": "hexadecimal",
+  "outputFormat": "binary"
+}
+
+###
+
+// This calls the function hosted on firebase
+POST https://us-central1-number-format-converter-19ca7.cloudfunctions.net/convert
+Content-Type: application/json
+
+{
+  "inputNumber": 20,
+  "inputFormat": "hexadecimal",
+  "outputFormat": "binary"
+}
+
+###
