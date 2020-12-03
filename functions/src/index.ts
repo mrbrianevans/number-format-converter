@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import {converter} from "./controllers/corrospondingFunctions";
+import {converter, functionsMapper} from "./controllers/corrospondingFunctions";
 
 // // Backend code must be called like this to respond to requests
 // // Firebase Functions Docs:
@@ -17,9 +17,36 @@ export const convert = functions.https.onRequest((request, response) => {
       response.status(400).send("Could not interpret JSON: " + request.body.keys().toString())
     }
   } else { // valid request format POST JSON
-    //calculate answer
-    const answer: string = converter(request.body.inputNumber, request.body.inputFormat, request.body.outputFormat)
-    // Send response
-    response.send(JSON.stringify({answer: answer}))
+    //futher validation:
+    let errorMessages: string[] = []
+    if (!request.body.inputNumber) {
+      errorMessages.push("Input number not specified")
+    } else if (typeof request.body.inputNumber !== "string") {
+      errorMessages.push("Input number format not valid. Should be string")
+    }
+    if (!request.body.inputFormat) {
+      errorMessages.push("Input format not specified")
+    } else if (!functionsMapper[request.body.inputFormat]) {
+      errorMessages.push("Input format not valid")
+    }
+    if (!request.body.outputFormat) {
+      errorMessages.push("Output number not specified")
+    } else if (!functionsMapper[request.body.outputFormat]) {
+      errorMessages.push("Output format not valid")
+    }
+    if (errorMessages.length === 0) {
+      try {
+        //calculate answer
+        const answer: string = converter(request.body.inputNumber, request.body.inputFormat, request.body.outputFormat)
+        // Send response
+        response.send(JSON.stringify({answer: answer}))
+      } catch (e) {
+        // error occurred in calculation or sending a response. Probably in calculation
+        errorMessages.push("Unexplained error occured during calculation")
+      }
+    }
+    if (errorMessages.length !== 0) {
+      response.send(JSON.stringify({errors: errorMessages}))
+    }
   }
 });
