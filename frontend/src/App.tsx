@@ -4,14 +4,33 @@ import {convert} from './components/convertFunction';
 import Footer from './components/footer';
 
 const App: React.FC = () => {
-    const [inputNumber, updateInputNumber] = useState<string>("")
-    const [outputNumber, setOutputNumber] = useState<string>("")
+    const [inputNumber, updateInputNumber] = useState<string>("");
+    const [outputNumber, setOutputNumber] = useState<string>("");
+
+    const [fromFormat, setFromFormat] = useState<string>("");
+    const [toFormat, setToFormat] = useState<string>("");
+
     useEffect(() => {
             if (inputNumber !== undefined)
                 convert(Number(inputNumber), "binary", "hexadecimal")
                     .then(response => setOutputNumber(response.answer))
         }, [inputNumber]
     )
+
+    const handleTextAreaChange = (e: any) =>{
+        // console.log(e.target.value);
+        updateInputNumber(e.target.value);
+    }
+
+    const handleSelectChange1 = (e: any) =>{
+        // console.log(e.target.value);
+        setFromFormat(e.target.value);
+    }
+
+    const handleSelectChange2 = (e: any) =>{
+        // console.log(e.target.value);
+        setToFormat(e.target.value);
+    }
 
     return (
         <div className="app">
@@ -28,8 +47,8 @@ const App: React.FC = () => {
                     <div className="col-md-5">
                         <form>
                              <div className="form-group">
-                                <label className="text" >Example select</label>
-                                <select className="form-control" id="select1">
+                                <label className="text" >From {fromFormat}</label>
+                                <select onChange={e => handleSelectChange1(e)} name="select" className="form-control" id="select1">
                                     <option className="dropdown-item" value="binary">Binary</option>
                                     <option className="dropdown-item" value="octal">Octal</option>
                                     <option className="dropdown-item" value="decimal">Decimal</option>
@@ -42,8 +61,7 @@ const App: React.FC = () => {
                               </div>
 
                               <div className="form-group">
-                                <label className="text">Example textarea</label>
-                                <textarea className="form-control" rows={1}></textarea>
+                                <textarea className="form-control" rows={1} value={inputNumber} onChange={e => handleTextAreaChange(e)}></textarea>
                               </div>
                         </form>
                     </div>
@@ -59,8 +77,8 @@ const App: React.FC = () => {
                     <div className="col-md-5">
                         <form>
                              <div className="form-group">
-                                <label className="text" >Example select</label>
-                                <select className="form-control" id="select2">
+                                <label className="text" >To {toFormat}</label>
+                                <select name="select" onChange={e => {handleSelectChange2(e);}} className="form-control" id="select2">
                                     <option className="dropdown-item" value="binary">Binary</option>
                                     <option className="dropdown-item" value="octal">Octal</option>
                                     <option className="dropdown-item" value="decimal">Decimal</option>
@@ -73,8 +91,7 @@ const App: React.FC = () => {
                               </div>
 
                               <div className="form-group">
-                                <label className="text">Example textarea</label>
-                                <textarea className="form-control" rows={1}></textarea>
+                                <textarea className="form-control" disabled rows={1} value={outputNumber} onChange={ e=> {handleTextAreaChange(e);} }></textarea>
                               </div>
                         </form>
                     </div>
