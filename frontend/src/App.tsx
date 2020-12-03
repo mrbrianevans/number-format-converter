@@ -13,7 +13,12 @@ const App: React.FC = () => {
     useEffect(() => {
             if (inputNumber !== undefined)
                 convert(Number(inputNumber), "binary", "hexadecimal")
-                    .then(response => setOutputNumber(response.answer))
+                    .then(response => {
+                        if (response.answer)
+                            setOutputNumber(response.answer)
+                        else if (response.errors)
+                            console.log(response.errors)
+                    })
         }, [inputNumber]
     )
 
@@ -68,7 +73,7 @@ const App: React.FC = () => {
                             <div className="d-flex justify-content-center">
                                 <h3 className="text">to</h3>
                             </div>
-                        </div>    
+                        </div>
                     </div>
 
                     <div className="col-md-5">
@@ -93,18 +98,18 @@ const App: React.FC = () => {
                         </form>
                     </div>
 
-               
+
                     {/*
                         <p>
                             The converted number is: {outputNumber || " not worked out yet"}
                         </p>
                     */}
                 </div> {/*end of the row*/}
-           
-                
+
+
             </div>{/*end of the container*/}
-           
-             <Footer />
+
+            <Footer />
         </div>
   );
 }

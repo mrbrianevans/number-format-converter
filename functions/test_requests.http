@@ -3,9 +3,9 @@ POST http://localhost:5001/number-format-converter-19ca7/us-central1/convert
 Content-Type: application/json
 
 {
-  "inputNumber": "g",
-  "inputFormat": "hexadecimal",
-  "outputFormat": "binary"
+  "inputNumber": "A",
+  "inputFormat": "duodecimal",
+  "outputFormat": "roman"
 }
 
 ###
@@ -15,8 +15,8 @@ POST https://us-central1-number-format-converter-19ca7.cloudfunctions.net/conver
 Content-Type: application/json
 
 {
-  "inputNumber": 20,
-  "inputFormat": "hexadecimal",
+  "inputNumber": "20",
+  "inputFormat": "duodecimal",
   "outputFormat": "binary"
 }
 

@@ -11,8 +11,10 @@ export const convert = functions.https.onRequest((request, response) => {
   response.setHeader("Access-Control-Allow-Origin", "*")
   if (request.method.toLowerCase() !== "post") response.status(405).send("Only POST method allowed")
   else if (!request.is("json")) {
+    functions.logger.error("JSON header missing.", {structuredData: true});
     response.status(400).send("JSON header missing. Add to you request headers Content-Type: application/json")
   } else if (typeof request.body !== "object") {
+    functions.logger.error("Could not interpret JSON: " + JSON.stringify(request.body), {structuredData: true});
     response.status(400).send("Could not interpret JSON: " + JSON.stringify(request.body))
   } else { // valid request format POST JSON
     //futher validation:
@@ -44,6 +46,7 @@ export const convert = functions.https.onRequest((request, response) => {
       }
     }
     if (errorMessages.length !== 0) {
+      functions.logger.error("Errors occurred: " + JSON.stringify(errorMessages), {structuredData: true});
       response.send(JSON.stringify({errors: errorMessages}))
     }
   }
