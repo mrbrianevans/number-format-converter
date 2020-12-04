@@ -1,6 +1,7 @@
 // This is to test on local host
 POST http://localhost:5001/number-format-converter-19ca7/us-central1/convert
 Content-Type: application/json
+Accept: application/json, text/html
 
 {
   "inputNumber": "A",

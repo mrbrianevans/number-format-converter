@@ -3,7 +3,7 @@ export interface apiResponseFormat {
     errors?: string[];
 }
 
-export const convert: (inputNumber: number, inputFormat: string, outputFormat: string) => Promise<apiResponseFormat>
+export const convert: (inputNumber: string, inputFormat: string, outputFormat: string) => Promise<apiResponseFormat>
     = (inputNumber, inputFormat, outputFormat) => {
     console.log("calling api")
     const productionURL = "https://us-central1-number-format-converter-19ca7.cloudfunctions.net/convert"
@@ -12,38 +12,32 @@ export const convert: (inputNumber: number, inputFormat: string, outputFormat: s
         return mode === "test" ? testURL : productionURL
     }
 
-    // const httpRequest = new XMLHttpRequest()
-    // httpRequest.open("post", url("test"), false)
-    // httpRequest.setRequestHeader("Content-Type", "application/json")
-    // httpRequest.send(JSON.stringify({inputNumber: 50}))
-    // console.log("Synchronous response: ")
-    // console.log(httpRequest.response)
 
-    return fetch(url("production"),
+    return fetch(url("test"),
         {
-            method: "POST",
+            method: "post",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json, text/html"
             },
             body: JSON.stringify({
                 "inputNumber": inputNumber,
                 "inputFormat": inputFormat,
                 "outputFormat": outputFormat
-            }),
-            // body: '{"inputNumber":"50"}',
-            mode: "no-cors",
+            })
         })
+        .then(r => r.json())
         .then(r => {
             console.log(r)
-            console.log(r.body) // log response
+            // console.log(r.body) // log response
             return r
         })
-        .then(r => {
-            if (r === null)
-                return ({errors: ["Null returned from API?"]})
-            else
-                return r.json()
-        })
+        // .then(r => {
+        //     if (r === null)
+        //         return ({errors: ["Null returned from API?"]})
+        //     else
+        //         return r.json()
+        // })
         .catch(r => {
             console.log(r)
             return ({errors: [r.toString()]})

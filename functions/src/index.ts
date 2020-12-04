@@ -1,16 +1,14 @@
 import * as functions from 'firebase-functions';
 import {converter, functionsMapper} from "./controllers/corrospondingFunctions";
 
-// // Backend code must be called like this to respond to requests
-// // Firebase Functions Docs:
-// // https://firebase.google.com/docs/functions/typescript
+const express = require('express')
+const cors = require('cors')
+const convert = express()
 
+convert.use(cors({origin: true}))
 
-export const convert = functions.https.onRequest((request, response) => {
-  functions.logger.info("Convert number function called with " + request.method, {structuredData: true});
-  response.setHeader("Access-Control-Allow-Origin", "*")
-  if (request.method.toLowerCase() !== "post") response.status(405).send("Only POST method allowed")
-  else if (!request.is("json")) {
+convert.post("/", (request: any, response: any) => {
+  if (!request.is("json")) {
     functions.logger.error("JSON header missing.", {structuredData: true});
     response.status(400).send("JSON header missing. Add to you request headers Content-Type: application/json")
   } else if (typeof request.body !== "object") {
@@ -20,7 +18,8 @@ export const convert = functions.https.onRequest((request, response) => {
     //futher validation:
     const errorMessages: string[] = []
     if (!request.body.inputNumber) {
-      errorMessages.push("Input number not specified")
+      // errorMessages.push("Input number not specified")
+      response.status(200).json({answer: ""})
     } else if (typeof request.body.inputNumber !== "string") {
       errorMessages.push("Input number format not valid. Should be string")
     }
@@ -39,7 +38,7 @@ export const convert = functions.https.onRequest((request, response) => {
         //calculate answer
         const answer: string = converter(request.body.inputNumber, request.body.inputFormat, request.body.outputFormat)
         // Send response
-        response.send(JSON.stringify({answer: answer}))
+        response.status(200).json({answer: answer})
       } catch (e) {
         // error occurred in calculation or sending a response. Probably in calculation
         errorMessages.push("Unexplained error occured during calculation")
@@ -47,7 +46,9 @@ export const convert = functions.https.onRequest((request, response) => {
     }
     if (errorMessages.length !== 0) {
       functions.logger.error("Errors occurred: " + JSON.stringify(errorMessages), {structuredData: true});
-      response.send(JSON.stringify({errors: errorMessages}))
+      response.status(200).json({errors: errorMessages})
     }
   }
-});
+})
+
+exports.convert = functions.https.onRequest(convert)

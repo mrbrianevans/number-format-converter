@@ -7,19 +7,19 @@ const App: React.FC = () => {
     const [inputNumber, updateInputNumber] = useState<string>("");
     const [outputNumber, setOutputNumber] = useState<string>("");
 
-    const [fromFormat, setFromFormat] = useState<string>("");
-    const [toFormat, setToFormat] = useState<string>("");
+    const [fromFormat, setFromFormat] = useState<string>("binary");
+    const [toFormat, setToFormat] = useState<string>("binary");
 
     useEffect(() => {
             if (inputNumber !== undefined)
-                convert(Number(inputNumber), "binary", "hexadecimal")
+                convert(inputNumber, fromFormat, toFormat)
                     .then(response => {
                         if (response.answer)
                             setOutputNumber(response.answer)
                         else if (response.errors)
                             console.log(response.errors)
                     })
-        }, [inputNumber]
+        }, [inputNumber, fromFormat, toFormat]
     )
 
     const handleTextAreaChange = (e: any) =>{
@@ -54,11 +54,16 @@ const App: React.FC = () => {
                                     <option className="dropdown-item" value="binary">Binary</option>
                                     <option className="dropdown-item" value="octal">Octal</option>
                                     <option className="dropdown-item" value="decimal">Decimal</option>
-                                    <option className="dropdown-item" value="hexadecimal">Hexadecimal</option>
-                                    <option className="dropdown-item" value="base12">Base12</option>
+                                    <option className="dropdown-item"
+                                            value="hexadecimal">Hexadecimal
+                                    </option>
+                                    <option className="dropdown-item" value="duodecimal">Base12
+                                    </option>
                                     <option className="dropdown-item" value="base64">Base64</option>
-                                    <option className="dropdown-item" value="romannumeral">Roman Numeral</option>
-                                    <option className="dropdown-item" value="english">English</option>
+                                    <option className="dropdown-item" value="roman">Roman Numeral
+                                    </option>
+                                    <option className="dropdown-item" value="english">English
+                                    </option>
                                 </select>
                               </div>
 
@@ -84,11 +89,16 @@ const App: React.FC = () => {
                                     <option className="dropdown-item" value="binary">Binary</option>
                                     <option className="dropdown-item" value="octal">Octal</option>
                                     <option className="dropdown-item" value="decimal">Decimal</option>
-                                    <option className="dropdown-item" value="hexadecimal">Hexadecimal</option>
-                                    <option className="dropdown-item" value="base12">Base12</option>
+                                    <option className="dropdown-item"
+                                            value="hexadecimal">Hexadecimal
+                                    </option>
+                                    <option className="dropdown-item" value="duodecimal">Base12
+                                    </option>
                                     <option className="dropdown-item" value="base64">Base64</option>
-                                    <option className="dropdown-item" value="romannumeral">Roman Numeral</option>
-                                    <option className="dropdown-item" value="english">English</option>
+                                    <option className="dropdown-item" value="roman">Roman Numeral
+                                    </option>
+                                    <option className="dropdown-item" value="english">English
+                                    </option>
                                 </select>
                               </div>
 
