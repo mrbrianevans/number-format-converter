@@ -13,12 +13,12 @@ export const convert: (inputNumber: string, inputFormat: string, outputFormat: s
     }
 
 
-    return fetch(url("test"),
+    return fetch(url("production"),
         {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json, text/html"
+                "Accept": "application/json"
             },
             body: JSON.stringify({
                 "inputNumber": inputNumber,
@@ -29,15 +29,8 @@ export const convert: (inputNumber: string, inputFormat: string, outputFormat: s
         .then(r => r.json())
         .then(r => {
             console.log(r)
-            // console.log(r.body) // log response
             return r
         })
-        // .then(r => {
-        //     if (r === null)
-        //         return ({errors: ["Null returned from API?"]})
-        //     else
-        //         return r.json()
-        // })
         .catch(r => {
             console.log(r)
             return ({errors: [r.toString()]})

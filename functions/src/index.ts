@@ -10,10 +10,10 @@ convert.use(cors({origin: true}))
 convert.post("/", (request: any, response: any) => {
   if (!request.is("json")) {
     functions.logger.error("JSON header missing.", {structuredData: true});
-    response.status(400).send("JSON header missing. Add to you request headers Content-Type: application/json")
+    response.status(400).json({errors: ["JSON header missing. Add to you request headers Content-Type: application/json"]})
   } else if (typeof request.body !== "object") {
     functions.logger.error("Could not interpret JSON: " + JSON.stringify(request.body), {structuredData: true});
-    response.status(400).send("Could not interpret JSON: " + JSON.stringify(request.body))
+    response.status(400).json({errors: ["Could not interpret JSON: " + JSON.stringify(request.body)]})
   } else { // valid request format POST JSON
     //futher validation:
     const errorMessages: string[] = []
