@@ -11,7 +11,7 @@ Open source project to convert numbers between different formats.
 - octal
 - decimal
 - hexadecimal
-- base 12
+- duodecimal (base 12)
 - base 64
 - roman numerals
 - english words
@@ -26,7 +26,7 @@ Open source project to convert numbers between different formats.
 
 `build` and `lib` are the only folders uploaded to firebase. 
 
-To deploy, run `npm run deploy` in either `frontend` or `functions` to only deploy either the frontend or the backend
+Successful PR's or merges to the repo should automatically deploy to Firebase
 
 
 ## Backend
