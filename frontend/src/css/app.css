@@ -1,9 +1,10 @@
-.app{
-	background: #f0f0f0;
-	font-family: sans-serif;
+.app {
+    background: #f0f0f0;
+    font-family: sans-serif;
 }
-.text{
-	color: #364f6b;
+
+.text {
+    color: #364f6b;
 }
 
 .container {
@@ -11,4 +12,3 @@
   max-width: 680px;
   padding: 0 15px;
 }
-
