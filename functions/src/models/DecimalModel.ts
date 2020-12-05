@@ -7,7 +7,7 @@ const DecimalModel: IModel = {
     },
     decode: (representation: string) => {
         return Number(representation)
-    },
+    }
 }
 
 export default DecimalModel

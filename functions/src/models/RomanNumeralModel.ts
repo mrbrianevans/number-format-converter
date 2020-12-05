@@ -7,7 +7,7 @@ const RomanNumeralModel: IModel = {
     },
     decode: (representation: string) => {
         return 0
-    },
+    }
 }
 
 export default RomanNumeralModel
