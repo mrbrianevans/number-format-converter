@@ -1,13 +1,11 @@
-import {IModel} from "./IModel";
+import { IModel } from './IModel'
 
 // convert between hexadecimal and decimal
 const HexadecimalModel: IModel = {
     encode: (decimal: number) => {
-
-        return "F55A01"
+        return 'F55A01'
     },
     decode: (representation: string) => {
-
         return 0
     },
 }

@@ -1,13 +1,11 @@
-import {IModel} from "./IModel";
+import { IModel } from './IModel'
 
 // convert between octal and decimal
 const OctalModel: IModel = {
     encode: (decimal: number) => {
-
-        return "657"
+        return '657'
     },
     decode: (representation: string) => {
-
         return 0
     },
 }

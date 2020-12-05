@@ -1,13 +1,11 @@
-import {IModel} from "./IModel";
+import { IModel } from './IModel'
 
 // convert between base 12 (duodecimal) and decimal
 const DuodecimalModel: IModel = {
     encode: (decimal: number) => {
-
-        return "3AB"
+        return '3AB'
     },
     decode: (representation: string) => {
-
         return 0
     },
 }

@@ -5,9 +5,11 @@ module.exports = {
         node: true,
     },
     extends: [
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:import/typescript",
+        'plugin:import/errors',
+        'plugin:prettier/recommended',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:import/warnings',
+        'plugin:import/typescript'
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -17,6 +19,7 @@ module.exports = {
     plugins: [
         "@typescript-eslint",
         "import",
+        'prettier'
     ],
     rules: {
         "@typescript-eslint/adjacent-overload-signatures": "error",

@@ -1,13 +1,11 @@
-import {IModel} from "./IModel";
+import { IModel } from './IModel'
 
 // convert between english words and decimal
 const EnglishModel: IModel = {
     encode: (decimal: number) => {
-
-        return "Three"
+        return 'Three'
     },
     decode: (representation: string) => {
-
         return 0
     },
 }

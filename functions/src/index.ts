@@ -1,52 +1,75 @@
-import * as functions from 'firebase-functions';
-import {converter, functionsMapper} from "./controllers/corrospondingFunctions";
+import * as functions from 'firebase-functions'
+import { converter, functionsMapper } from './controllers/corrospondingFunctions'
 
 const express = require('express')
 const cors = require('cors')
 const convert = express()
 
-convert.use(cors({origin: true}))
+convert.use(cors({ origin: true }))
 
-convert.post("/", (request: any, response: any) => {
-  if (!request.is("json")) {
-    functions.logger.error("JSON header missing.", {structuredData: true});
-    response.status(400).json({errors: ["JSON header missing. Add to you request headers Content-Type: application/json"]})
-  } else if (typeof request.body !== "object") {
-    functions.logger.error("Could not interpret JSON: " + JSON.stringify(request.body), {structuredData: true});
-    response.status(400).json({errors: ["Could not interpret JSON: " + JSON.stringify(request.body)]})
-  } else { // valid request format POST JSON
+convert.post('/', (request: any, response: any) => {
+  if (!request.is('json')) {
+    functions.logger.error('JSON header missing.', { structuredData: true })
+    response.status(400).json({
+      errors: [
+        'JSON header missing. Add to you request headers Content-Type: application/json'
+      ]
+    })
+  } else if (typeof request.body !== 'object') {
+    functions.logger.error(
+        'Could not interpret JSON: ' + JSON.stringify(request.body),
+        { structuredData: true }
+    )
+    response.status(400).json({
+      errors: [
+        'Could not interpret JSON: ' + JSON.stringify(request.body)
+      ]
+    })
+  } else {
+    // valid request format POST JSON
     //futher validation:
     const errorMessages: string[] = []
     if (!request.body.inputNumber) {
       // errorMessages.push("Input number not specified")
-      response.status(200).json({answer: ""})
-    } else if (typeof request.body.inputNumber !== "string") {
-      errorMessages.push("Input number format not valid. Should be string")
+      response.status(200).json({ answer: '' })
+    } else if (typeof request.body.inputNumber !== 'string') {
+      errorMessages.push(
+          'Input number format not valid. Should be string'
+      )
     }
     if (!request.body.inputFormat) {
-      errorMessages.push("Input format not specified")
+      errorMessages.push('Input format not specified')
     } else if (!functionsMapper[request.body.inputFormat]) {
-      errorMessages.push("Input format not valid")
+      errorMessages.push('Input format not valid')
     }
     if (!request.body.outputFormat) {
-      errorMessages.push("Output number not specified")
+      errorMessages.push('Output number not specified')
     } else if (!functionsMapper[request.body.outputFormat]) {
-      errorMessages.push("Output format not valid")
+      errorMessages.push('Output format not valid')
     }
     if (errorMessages.length === 0) {
       try {
         //calculate answer
-        const answer: string = converter(request.body.inputNumber, request.body.inputFormat, request.body.outputFormat)
+        const answer: string = converter(
+            request.body.inputNumber,
+            request.body.inputFormat,
+            request.body.outputFormat
+        )
         // Send response
-        response.status(200).json({answer: answer})
+        response.status(200).json({ answer: answer })
       } catch (e) {
         // error occurred in calculation or sending a response. Probably in calculation
-        errorMessages.push("Unexplained error occured during calculation")
+        errorMessages.push(
+            'Unexplained error occured during calculation'
+        )
       }
     }
     if (errorMessages.length !== 0) {
-      functions.logger.error("Errors occurred: " + JSON.stringify(errorMessages), {structuredData: true});
-      response.status(200).json({errors: errorMessages})
+      functions.logger.error(
+          'Errors occurred: ' + JSON.stringify(errorMessages),
+          { structuredData: true }
+      )
+      response.status(200).json({ errors: errorMessages })
     }
   }
 })
