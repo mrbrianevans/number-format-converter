@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start": "firebase emulators:start",
-    "test": "mocha -r ts-node/register test/*.ts",
     "client-build": "cd frontend && npm run build",
     "functions-build": "cd functions && npm run build",
     "build": "npx concurrently \"npm run client-build\" \"npm run functions-build\""
