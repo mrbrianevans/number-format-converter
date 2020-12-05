@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import './css/app.css'
 import { convert } from './components/convertFunction'
 import Footer from './components/footer'
+import { DropDown } from './components/DropDown'
 
 const App: React.FC = () => {
   const [inputNumber, updateInputNumber] = useState<string>('')
   const [outputNumber, setOutputNumber] = useState<string>('')
 
-  const [fromFormat, setFromFormat] = useState<string>('binary')
-  const [toFormat, setToFormat] = useState<string>('binary')
+  const [fromFormat, setFromFormat] = useState<string>('decimal')
+  const [toFormat, setToFormat] = useState<string>('base64')
 
   useEffect(() => {
     if (inputNumber !== undefined)
@@ -22,13 +23,41 @@ const App: React.FC = () => {
     updateInputNumber(e.target.value)
   }
 
-  const handleSelectChange1 = (e: any) => {
-    setFromFormat(e.target.value)
-  }
-
-  const handleSelectChange2 = (e: any) => {
-    setToFormat(e.target.value)
-  }
+  // in future, this list should be retrieved from the API
+  const formats: { value: string; label: string }[] = [
+    {
+      value: 'binary',
+      label: 'Binary'
+    },
+    {
+      value: 'octal',
+      label: 'Octal'
+    },
+    {
+      value: 'decimal',
+      label: 'Decimal'
+    },
+    {
+      value: 'duodecimal',
+      label: 'Duodecimal (base 12)'
+    },
+    {
+      value: 'hexadecimal',
+      label: 'Hexadecimal'
+    },
+    {
+      value: 'base64',
+      label: 'Base 64'
+    },
+    {
+      value: 'roman',
+      label: 'Roman numerals'
+    },
+    {
+      value: 'english',
+      label: 'English words'
+    }
+  ]
 
   return (
     <div className='app'>
@@ -46,37 +75,11 @@ const App: React.FC = () => {
             <form>
               <div className='form-group'>
                 <label className='text'>From {fromFormat}</label>
-                <select
-                  onChange={(e) => handleSelectChange1(e)}
-                  name='select'
-                  className='form-control'
-                  id='select1'
-                >
-                  <option className='dropdown-item' value='binary'>
-                    Binary
-                  </option>
-                  <option className='dropdown-item' value='octal'>
-                    Octal
-                  </option>
-                  <option className='dropdown-item' value='decimal'>
-                    Decimal
-                  </option>
-                  <option className='dropdown-item' value='hexadecimal'>
-                    Hexadecimal
-                  </option>
-                  <option className='dropdown-item' value='duodecimal'>
-                    Base12
-                  </option>
-                  <option className='dropdown-item' value='base64'>
-                    Base64
-                  </option>
-                  <option className='dropdown-item' value='roman'>
-                    Roman Numeral
-                  </option>
-                  <option className='dropdown-item' value='english'>
-                    English
-                  </option>
-                </select>
+                <DropDown
+                  value={fromFormat}
+                  onChange={(selected) => setFromFormat(selected)}
+                  options={formats}
+                />
               </div>
 
               <div className='form-group'>
@@ -85,7 +88,7 @@ const App: React.FC = () => {
                   rows={1}
                   value={inputNumber}
                   onChange={(e) => handleTextAreaChange(e)}
-                ></textarea>
+                />
               </div>
             </form>
           </div>
@@ -102,39 +105,11 @@ const App: React.FC = () => {
             <form>
               <div className='form-group'>
                 <label className='text'>To {toFormat}</label>
-                <select
-                  name='select'
-                  onChange={(e) => {
-                    handleSelectChange2(e)
-                  }}
-                  className='form-control'
-                  id='select2'
-                >
-                  <option className='dropdown-item' value='binary'>
-                    Binary
-                  </option>
-                  <option className='dropdown-item' value='octal'>
-                    Octal
-                  </option>
-                  <option className='dropdown-item' value='decimal'>
-                    Decimal
-                  </option>
-                  <option className='dropdown-item' value='hexadecimal'>
-                    Hexadecimal
-                  </option>
-                  <option className='dropdown-item' value='duodecimal'>
-                    Base12
-                  </option>
-                  <option className='dropdown-item' value='base64'>
-                    Base64
-                  </option>
-                  <option className='dropdown-item' value='roman'>
-                    Roman Numeral
-                  </option>
-                  <option className='dropdown-item' value='english'>
-                    English
-                  </option>
-                </select>
+                <DropDown
+                  value={toFormat}
+                  onChange={(selected) => setToFormat(selected)}
+                  options={formats}
+                />
               </div>
 
               <div className='form-group'>
@@ -146,17 +121,11 @@ const App: React.FC = () => {
                   onChange={(e) => {
                     handleTextAreaChange(e)
                   }}
-                ></textarea>
+                />
               </div>
             </form>
           </div>
-
-          {/*
-                        <p>
-                            The converted number is: {outputNumber || " not worked out yet"}
-                        </p>
-                    */}
-        </div>{' '}
+        </div>
         {/*end of the row*/}
       </div>
       {/*end of the container*/}
