@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/mrbrianevans/number-format-converter/issues"
   },
-  "homepage": "https://github.com/mrbrianevans/number-format-converter#readme"
+  "homepage": "https://github.com/mrbrianevans/number-format-converter#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.10"
+  }
 }
