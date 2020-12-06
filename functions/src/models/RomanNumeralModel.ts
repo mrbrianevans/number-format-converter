@@ -73,6 +73,7 @@ const RomanNumeralModel: IModel = {
             }
         }
         return sum
+        
     }
 }
 
