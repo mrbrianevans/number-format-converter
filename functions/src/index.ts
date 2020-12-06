@@ -1,5 +1,8 @@
 import * as functions from 'firebase-functions'
-import { converter, functionsMapper } from './controllers/corrospondingFunctions'
+import {
+    converter,
+    functionsMapper
+} from './controllers/corrospondingFunctions'
 
 const express = require('express')
 const cors = require('cors')

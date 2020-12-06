@@ -15,7 +15,7 @@ describe('roman numeral', () => {
     })
     it('should revert to itself', () => {
         for (let i = 0; i < 1000; i++) {
-            const input = Math.round(Math.random() * 1_000_000).toString()
+            const input = Math.round(Math.random() * 3_999).toString()
             const output = converter(input, 'decimal', 'roman')
             expect(converter(output, 'roman', 'decimal')).to.equal(input)
         }
