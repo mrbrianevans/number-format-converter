@@ -1,9 +1,14 @@
-.app{
-	background: #f0f0f0;
-	font-family: sans-serif;
+.app {
+  background: #f0f0f0;
+  font-family: sans-serif;
 }
-.text{
-	color: #364f6b;
+
+.headline-text {
+  color: #364f6b;
+  margin-top: 12px;
+}
+.text {
+  color: #364f6b;
 }
 
 .container {
@@ -12,3 +17,146 @@
   padding: 0 15px;
 }
 
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Portrait for iPhone 5/SE: */
+@media only screen and (max-width: 320px) {
+  .container {
+    width: 320px;
+    max-width: 680px;
+    padding: 0 15px;
+  }
+
+  .headline-text {
+    font-size: 24px;
+    color: #364f6b;
+    margin-top: 12px;
+  }
+
+  .row {
+    width: 320px;
+  }
+}
+
+/* Landscape for iPhone 5/SE: */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  .container {
+    width: auto;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .headline-text {
+    font-size: 24px;
+    color: #364f6b;
+    margin-top: 12px;
+  }
+
+  .row {
+    width: 568px;
+  }
+}
+
+/* Portrait for iPhone 6/7/8 SE: */
+@media only screen and (max-width: 414px) {
+  .container {
+    width: auto;
+    max-width: 414px;
+    padding: 0 15px;
+  }
+
+  .headline-text {
+    font-size: 24px;
+    color: #364f6b;
+    margin-top: 12px;
+  }
+
+  .row {
+    width: 414px;
+  }
+}
+
+/* Landscape for iPhone 6/7/8 SE: */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: landscape) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    /* max-width: 100%; */
+    padding: 0 15px;
+  }
+
+  .headline-text {
+    font-size: 24px;
+    color: #364f6b;
+    margin-top: 12px;
+  }
+
+  .row {
+    width: 50%;
+  }
+}
+
+/* Portrait for iPhone X: */
+@media only screen and (max-width: 375px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+  }
+
+  .headline-text {
+    font-size: 24px;
+    color: #364f6b;
+    margin-top: 12px;
+  }
+
+  .row {
+    width: 320px;
+  }
+}
+
+/* Landscape for iPhone 10*/
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: landscape) {
+  .container {
+    width: auto;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .headline-text {
+    font-size: 24px;
+    color: #364f6b;
+    margin-top: 12px;
+  }
+
+  .row {
+    width: 100%;
+  }
+}
+
+/* Portrait for Pixel 2 XL: */
+@media only screen and (max-width: 411px) {
+  .container {
+    width: auto;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .headline-text {
+    font-size: 24px;
+    color: #364f6b;
+    margin-top: 12px;
+  }
+
+  .row {
+    width: 412px;
+  }
+}
