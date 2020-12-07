@@ -2,12 +2,107 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px; 
-  line-height: 60px; 
+  line-height: 60px;
   background-color: #f5f5f5;
-
   margin-top: 10px;
 }
+
+.container .text-center {
+  width: 100%;
+  margin: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+}
+
 #sticky-footer {
   flex-shrink: none;
+}
+
+/* Portrait for iPhone 5/SE: */
+@media only screen and (max-width: 320px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    line-height: 48px;
+    background-color: #f5f5f5;
+    margin-top: 10px;
+  }
+}
+
+/* Portrait for iPhone 6/7/8 Plus: */
+@media only screen and (max-width: 414px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    margin-top: 10px;
+  }
+
+  .developed-by {
+    line-height: 2.4;
+    margin-top: 12px;
+  }
+
+  .col-md-6 img {
+    margin: 12px 0;
+  }
+}
+
+/* Landscape for iPhone 6/7/8 SE: */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: landscape) {
+  .footer {
+    clear: both;
+    position: relative;
+    width: 100%;
+    background-color: #f5f5f5;
+    margin-top: 10px;
+  }
+
+  .developed-by {
+    line-height: 2.4;
+    margin-top: 12px;
+  }
+}
+
+/* Portrait for iPhone X: */
+@media only screen and (max-width: 375px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    margin-top: 10px;
+  }
+
+  .developed-by {
+    line-height: 2.4;
+    margin-top: 12px;
+  }
+
+  .col-md-6 img {
+    margin: 12px 0;
+  }
+}
+
+/* Landscape for iPhone X: */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: landscape) {
+  .footer {
+    clear: both;
+    position: relative;
+    width: auto;
+    background-color: #f5f5f5;
+    margin-top: 68px;
+  }
+
+  .developed-by {
+    line-height: 2.4;
+    margin-top: 12px;
+  }
 }

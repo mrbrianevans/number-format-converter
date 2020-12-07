@@ -30,5 +30,8 @@
   "homepage": "https://github.com/mrbrianevans/number-format-converter#readme",
   "devDependencies": {
     "@types/node": "^14.14.10"
+  },
+  "dependencies": {
+    "firebase": "^8.1.2"
   }
 }
