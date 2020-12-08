@@ -14,6 +14,10 @@
     ],
     "rewrites": [
       {
+        "source": "/convert",
+        "function": "convert"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
