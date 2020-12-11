@@ -3,10 +3,13 @@ import { IModel } from './IModel'
 // convert between hexadecimal and decimal
 const HexadecimalModel: IModel = {
     encode: (decimal: number) => {
-        return 'F55A01'
+        return decimal.toString(16).toUpperCase()
     },
     decode: (representation: string) => {
-        return 0
+        if (!representation.startsWith('0x')) {
+            representation = '0x' + representation
+        }
+        return Number(representation)
     }
 }
 
