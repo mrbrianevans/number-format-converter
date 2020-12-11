@@ -8,6 +8,7 @@ describe('hexadecimal', () => {
     })
     it('decode', () => {
         expect(HexadecimalModel.decode('12C')).to.equal(300)
+        expect(HexadecimalModel.decode('12c')).to.equal(300)
     })
     it('decode with 0x', async () => {
         expect(HexadecimalModel.decode('0x12C')).to.equal(300)
