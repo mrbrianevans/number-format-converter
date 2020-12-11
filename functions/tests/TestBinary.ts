@@ -5,10 +5,18 @@ import BinaryModel from '../src/models/BinaryModel'
 describe('binary', () => {
     it('encode', () => {
         expect(BinaryModel.encode(300)).to.equal('100101100')
+        expect(BinaryModel.encode(314)).to.equal('100111010')
+        expect(BinaryModel.encode(159)).to.equal('10011111')
+        expect(BinaryModel.encode(265)).to.equal('100001001')
+        expect(BinaryModel.encode(357)).to.equal('101100101')
     })
     it('decode', () => {
-        expect(BinaryModel.decode('100101100')).to.equal(300)
-    })
+        expect(BinaryModel.decode('1001"100101100".equal(300)
+    ;    expect(BinaryModel.decode('1001"100111010".equal(314)
+    ;    expect(BinaryModel.decode('1001"10011111".equal(159)
+    ;    expect(BinaryModel.decode('1000"100001001".equal(265)
+    ;    expect(BinaryModel.decode('1011"101100101".equal(357)
+    ;})
 
     it('convert', () => {
         expect(converter('300', 'decimal', 'binary')).to.equal('100101100')
