@@ -48,8 +48,9 @@ const Contributors: React.FC = () => {
 const Title = styled.h2`
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 18px;
+  margin-top: 100px;
 `
 
 const Image = styled.img`
