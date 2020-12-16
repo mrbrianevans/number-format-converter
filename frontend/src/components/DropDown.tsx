@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export const DropDown: (props: {
   value: string
@@ -7,7 +8,7 @@ export const DropDown: (props: {
 }) => JSX.Element = (props) => {
   return (
     <>
-      <select
+      <Select
         onChange={(e) => props.onChange(e.target.value)}
         value={props.value}
         name='select'
@@ -23,7 +24,23 @@ export const DropDown: (props: {
             {option.label}
           </option>
         ))}
-      </select>
+      </Select>
     </>
   )
 }
+
+const Select = styled.select`
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  width: 98%;
+  height: 40px;
+  resize: vertical;
+  margin: 5px auto 20px auto;
+`
