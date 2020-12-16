@@ -27,75 +27,79 @@ const Converter: React.FC = () => {
 
   return (
     <>
-      <div className='container'>
-        <div className='d-flex justify-content-center'>
-          <h1 className='text'>Number-Format-Converter</h1>
-        </div>
-      </div>
+      <Container>
+        <Form>
+          <label>From {fromFormat}:</label>
+          <DropDown
+            value={fromFormat}
+            onChange={(selected) => setFromFormat(selected)}
+            options={formats}
+          />
 
-      <hr />
+          <TextArea
+            rows={1}
+            value={inputNumber}
+            onChange={(e) => handleTextAreaChange(e)}
+          />
+        </Form>
 
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-5'>
-            <form>
-              <div className='form-group'>
-                <label className='text'>From {fromFormat}</label>
-                <DropDown
-                  value={fromFormat}
-                  onChange={(selected) => setFromFormat(selected)}
-                  options={formats}
-                />
-              </div>
+        <Form>
+          <label>To {toFormat}:</label>
+          <DropDown
+            value={toFormat}
+            onChange={(selected) => setToFormat(selected)}
+            options={formats}
+          />
 
-              <div className='form-group'>
-                <textarea
-                  className='form-control'
-                  rows={1}
-                  value={inputNumber}
-                  onChange={(e) => handleTextAreaChange(e)}
-                />
-              </div>
-            </form>
-          </div>
-
-          <div className='col-md-1'>
-            <div className='container'>
-              <div className='d-flex justify-content-center'>
-                <h3 className='text'>to</h3>
-              </div>
-            </div>
-          </div>
-
-          <div className='col-md-5'>
-            <form>
-              <div className='form-group'>
-                <label className='text'>To {toFormat}</label>
-                <DropDown
-                  value={toFormat}
-                  onChange={(selected) => setToFormat(selected)}
-                  options={formats}
-                />
-              </div>
-
-              <div className='form-group'>
-                <textarea
-                  className='form-control'
-                  disabled
-                  rows={1}
-                  value={outputNumber}
-                  onChange={(e) => {
-                    handleTextAreaChange(e)
-                  }}
-                />
-              </div>
-            </form>
-          </div>
-        </div>
-        {/*end of the row*/}
-      </div>
+          <TextArea
+            disabled
+            rows={1}
+            value={outputNumber}
+            onChange={(e) => {
+              handleTextAreaChange(e)
+            }}
+          />
+        </Form>
+      </Container>
     </>
   )
 }
+
+const Form = styled.form`
+  box-shadow: rgba(169, 174, 183, 0.5) 0px 1px 2px 0px;
+  background-color: rgb(255 255 255 / 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  width: 400px;
+
+  Label {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+`
+
+const TextArea = styled.textarea`
+  display: block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  width: 98%;
+  height: 40px;
+  resize: vertical;
+  margin: 20px auto;
+  font-size: 1.5rem;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+`
 
 export default Converter
