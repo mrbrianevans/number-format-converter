@@ -1,14 +1,10 @@
-.app {
-  background: #f0f0f0;
-  font-family: sans-serif;
-}
+/* This file contains unused styles, I failed to delete them incase 
+someone needs them for reference but I moved the styles to their 
+individual components */
 
 .headline-text {
   color: #364f6b;
   margin-top: 12px;
-}
-.text {
-  color: #364f6b;
 }
 
 .container {
