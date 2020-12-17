@@ -24,7 +24,7 @@ const Contributors: React.FC = () => {
 
   return (
     <>
-      <Title>Contributors</Title>
+      <Title>Project Contributors</Title>
       <Wrapper>
         {arrContributors.map((Contributors: any) => (
           <div key={Contributors.id}>
@@ -50,7 +50,8 @@ const Title = styled.h2`
   text-align: center;
   margin-bottom: 20px;
   font-size: 18px;
-  margin-top: 100px;
+  margin-top: 50px;
+  text-decoration: underline;
 `
 
 const Image = styled.img`
@@ -63,6 +64,7 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  margin-bottom: 50px;
 `
 
 export default Contributors
