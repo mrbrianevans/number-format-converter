@@ -18,11 +18,19 @@ const Footer: React.FC = () => {
 
       <Maintainers>
         Maintained by{' '}
-        <a target='_blank' href='http://brianevans.tech/'>
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
+          href='http://brianevans.tech/'
+        >
           Brian Evans
         </a>{' '}
         and{' '}
-        <a target='_blank' href='https://macbase.co.za/'>
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
+          href='https://macbase.co.za/'
+        >
           Daniel Mamphekgo
         </a>
       </Maintainers>
