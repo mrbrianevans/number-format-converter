@@ -7,22 +7,29 @@ import Converter from './components/converter'
 
 const App: React.FC = () => {
   return (
-    <div className='app'>
+    <AppWrapper className='app'>
       <FillPage>
         <PageHeader>Number Format Converter</PageHeader>
         <hr />
         <Converter />
+        <hr />
         <Contributors />
       </FillPage>
       <Footer />
-    </div>
+    </AppWrapper>
   )
 }
+
+const AppWrapper = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+`
 
 const FillPage = styled.div`
   /* make site content fill the page - in future & with the addition of more
   stuff to fill out the page naturally, this can be deleted */
-  min-height: 90vh;
 `
 
 const PageHeader = styled.h1`
