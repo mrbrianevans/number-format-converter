@@ -100,6 +100,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  margin: 50px 0;
 `
 
 export default Converter
