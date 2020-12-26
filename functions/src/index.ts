@@ -11,6 +11,7 @@ const convert = express()
 convert.use(cors({ origin: true }))
 
 convert.post('/', (request: any, response: any) => {
+    functions.logger.log('Request body: ', request.body)
     if (!request.is('json')) {
         functions.logger.error('JSON header missing.', { structuredData: true })
         response.status(400).json({
@@ -54,29 +55,37 @@ convert.post('/', (request: any, response: any) => {
             try {
                 //calculate answer
                 const answer: string = converter(
-                    request.body.inputNumber,
-                    request.body.inputFormat,
-                    request.body.outputFormat
+                  request.body.inputNumber,
+                  request.body.inputFormat,
+                  request.body.outputFormat
                 )
-                // Send response
-                functions.logger.log(
-                    `Converted ${request.body.inputNumber} from ${request.body.inputFormat} to ${answer} in ${request.body.outputFormat}`,
-                    request.body
-                )
-                response.status(200).json({ answer: answer })
+;                // Send response
+                if (
+                  converter(
+                    answer,
+                    request.body.outputFormat,
+                    request.body.inputFormat
+                  ) === request.body.inputNumber
+                ) {
+                    functions.logger.log(
+                      `Converted ${request.body.inputNumber} from ${request.body.inputFormat} to ${answer} in ${request.body.outputFormat}`
+                    )
+;                    response.status(200).json({ answer: answer })
+;                    return
+;                } else {
+                    errorMessages.push('"Failed to reverse conversion"
+;                }
             } catch (e) {
                 // error occurred in calculation or sending a response. Probably in calculation
-                errorMessages.push(
-                    'Unexplained error occured during calculation'
-                )
+                console.log(e);
+                errorMessages.push(`${e}`);
             }
         }
         if (errorMessages.length !== 0) {
-            functions.logger.error(
-       "Errors occurred during calculation: "tion: ',
-              errorMessages
-            )
-            response.status(200).json({ errors: errorMessages })
+            functions.logger.error("Errors occurred during calculation", {
+                errors: errorMessages
+            });
+            response.status(200).json({ errors: errorMessages });
         }
     }
 })

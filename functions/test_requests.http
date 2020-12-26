@@ -4,9 +4,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "inputNumber": "aa",
-  "inputFormat": "base64",
-  "outputFormat": "roman"
+  "inputNumber": "9007199254740992",
+  "inputFormat": "decimal",
+  "outputFormat": "decimal"
 }
 
 ###

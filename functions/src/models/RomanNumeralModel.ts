@@ -3,7 +3,9 @@ import { IModel } from './IModel'
 // convert between roman numerals and decimal
 const RomanNumeralModel: IModel = {
     encode: (decimal: number) => {
-        let numbers: number[] = [
+        if (decimal >= 4000)
+            throw new Error('"Exceeded maximum roman numeral size"
+;        const numbers: number[] = [
             1000,
             900,
             500,
@@ -18,23 +20,23 @@ const RomanNumeralModel: IModel = {
             4,
             1
         ]
-        let letters: string[] = [
-            'M',
-            'CM',
-            'D',
-            'CD',
-            'C',
-            'XC',
-            'L',
-            'XL',
-            'X',
-            'IX',
+;        const letters: string[] = [
+            '"M"
+            '"CM"
+            '"D"
+            '"CD"
+            '"C"
+            '"XC"
+            '"L"
+            '"XL"
+            '"X"
+            '"IX"
             'V',
             'IV',
             'I'
         ]
 
-        var final: string = ''
+        let final: string = "";
 
         for (let index: number = 0; index < numbers.length; index++) {
             //compare the paramater number and the numbers in the array
@@ -72,8 +74,8 @@ const RomanNumeralModel: IModel = {
                 )
             }
         }
+        if (sum >= 4000) throw new Error("Exceeded maximum roman numeral size");
         return sum
-        
     }
 }
 
