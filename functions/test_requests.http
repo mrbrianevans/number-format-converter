@@ -4,8 +4,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "inputNumber": "A",
-  "inputFormat": "duodecimal",
+  "inputNumber": "aa",
+  "inputFormat": "base64",
   "outputFormat": "roman"
 }
 
@@ -18,8 +18,7 @@ Accept: application/json
 
 {
   "inputNumber": "20",
-  "inputFormat": "duodecimal",
+  "inputFormat": "decimal",
   "outputFormat": "binary"
 }
 
-###

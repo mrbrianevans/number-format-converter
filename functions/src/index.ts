@@ -59,6 +59,10 @@ convert.post('/', (request: any, response: any) => {
                     request.body.outputFormat
                 )
                 // Send response
+                functions.logger.log(
+                    `Converted ${request.body.inputNumber} from ${request.body.inputFormat} to ${answer} in ${request.body.outputFormat}`,
+                    request.body
+                )
                 response.status(200).json({ answer: answer })
             } catch (e) {
                 // error occurred in calculation or sending a response. Probably in calculation
@@ -69,8 +73,8 @@ convert.post('/', (request: any, response: any) => {
         }
         if (errorMessages.length !== 0) {
             functions.logger.error(
-                'Errors occurred: ' + JSON.stringify(errorMessages),
-                { structuredData: true }
+       "Errors occurred during calculation: "tion: ',
+              errorMessages
             )
             response.status(200).json({ errors: errorMessages })
         }
