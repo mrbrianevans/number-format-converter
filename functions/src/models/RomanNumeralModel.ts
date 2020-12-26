@@ -4,8 +4,8 @@ import { IModel } from './IModel'
 const RomanNumeralModel: IModel = {
     encode: (decimal: number) => {
         if (decimal >= 4000)
-            throw new Error('"Exceeded maximum roman numeral size"
-;        const numbers: number[] = [
+            throw new Error('Exceeded maximum roman numeral size')
+        const numbers: number[] = [
             1000,
             900,
             500,
@@ -20,23 +20,23 @@ const RomanNumeralModel: IModel = {
             4,
             1
         ]
-;        const letters: string[] = [
-            '"M"
-            '"CM"
-            '"D"
-            '"CD"
-            '"C"
-            '"XC"
-            '"L"
-            '"XL"
-            '"X"
-            '"IX"
+        const letters: string[] = [
+            'M',
+            'CM',
+            'D',
+            'CD',
+            'C',
+            'XC',
+            'L',
+            'XL',
+            'X',
+            'IX',
             'V',
             'IV',
             'I'
         ]
 
-        let final: string = "";
+        let final: string = ''
 
         for (let index: number = 0; index < numbers.length; index++) {
             //compare the paramater number and the numbers in the array
@@ -74,7 +74,7 @@ const RomanNumeralModel: IModel = {
                 )
             }
         }
-        if (sum >= 4000) throw new Error("Exceeded maximum roman numeral size");
+        if (sum >= 4000) throw new Error('Exceeded maximum roman numeral size')
         return sum
     }
 }

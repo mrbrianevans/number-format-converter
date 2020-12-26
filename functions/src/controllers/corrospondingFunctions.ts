@@ -28,9 +28,10 @@ export const converter: (
 ) => string = (representation, inputFormat, outputFormat) => {
     // convert whatever form is input into a decimal number
     const decimalForm: number = functionsMapper[inputFormat].decode(
-      representation
+        representation
     )
-    if (;decimalForm >= Number.MAX_SAFE_INTEGER)
-        throw new Error('Exceeded"Exceeded maximum integer size"r;eturn the decimal converted into the target form
+    if (decimalForm >= Number.MAX_SAFE_INTEGER)
+        throw new Error('Exceeded maximum integer size')
+    // return the decimal converted into the target form
     return functionsMapper[outputFormat].encode(decimalForm)
 }
