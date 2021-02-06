@@ -1,4 +1,4 @@
-import { IModel } from './IModel'
+import { IModel } from "./IModel";
 
 // convert between octal and decimal
 const OctalModel: IModel = {

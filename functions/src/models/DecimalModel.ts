@@ -1,4 +1,4 @@
-import { IModel } from './IModel'
+import { IModel } from "./IModel";
 
 // convert between decimal and decimal
 const DecimalModel: IModel = {
