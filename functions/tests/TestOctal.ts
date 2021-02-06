@@ -2,7 +2,8 @@ import { expect } from 'chai'
 import { converter } from '../src/controllers/corrospondingFunctions'
 import OctalModel from '../src/models/OctalModel'
 
-describe('octal', () => {
+describe('octal', function () {
+    this.timeout(20_000)
     it('encode', () => {
         expect(OctalModel.encode(644)).to.equal('1204')
     })
@@ -14,8 +15,8 @@ describe('octal', () => {
         expect(converter('7126', 'octal', 'decimal')).to.equal('3670')
     })
     it('should revert to itself', () => {
-        for (let i = 0; i < 1000; i++) {
-            const input = Math.round(Math.random() * 1_000_000).toString()
+        for (let i = 0; i < 1_000_000; i++) {
+            const input = i.toString()
             const output = converter(input, 'decimal', 'octal')
             expect(converter(output, 'octal', 'decimal')).to.equal(input)
         }

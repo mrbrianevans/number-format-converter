@@ -2,7 +2,8 @@ import { expect } from 'chai'
 import { converter } from '../src/controllers/corrospondingFunctions'
 import BinaryModel from '../src/models/BinaryModel'
 
-describe('binary', () => {
+describe('binary', function () {
+    this.timeout(20_000)
     it('encode', () => {
         expect(BinaryModel.encode(300)).to.equal('100101100')
         expect(BinaryModel.encode(314)).to.equal('100111010')
@@ -23,8 +24,8 @@ describe('binary', () => {
         expect(converter('100101100', 'binary', 'decimal')).to.equal('300')
     })
     it('should revert to itself', () => {
-        for (let i = 0; i < 1000; i++) {
-            const input = Math.round(Math.random() * 1_000_000).toString()
+        for (let i = 0; i < 1_000_000; i++) {
+            const input = i.toString()
             const output = converter(input, 'decimal', 'binary')
             expect(converter(output, 'binary', 'decimal')).to.equal(input)
         }

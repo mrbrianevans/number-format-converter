@@ -65,7 +65,16 @@ convert.post('/', (request: any, response: any) => {
                         answer,
                         request.body.outputFormat,
                         request.body.inputFormat
-                    ) === request.body.inputNumber
+                    ).toLowerCase() ===
+                        request.body.inputNumber.toLowerCase() ||
+                    (request.body.inputFormat === 'hexadecimal' &&
+                        '0x' +
+                            converter(
+                                answer,
+                                request.body.outputFormat,
+                                request.body.inputFormat
+                            ).toLowerCase() ===
+                            request.body.inputNumber.toLowerCase())
                 ) {
                     functions.logger.log(
                         `Converted ${request.body.inputNumber} from ${request.body.inputFormat} to ${answer} in ${request.body.outputFormat}`

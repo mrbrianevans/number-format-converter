@@ -29,10 +29,23 @@ const EnglishModel: IModel = {
                 ' hundred' +
                 (decimalString.slice(1) === '00' ? '' : ' and ' + tensunits)
             )
+        } else if (decimalString.length > 3 && decimalString.length < 7) {
+            const thousands = Number(
+                decimalString.slice(0, decimalString.length - 3)
+            )
+            const rest = Number(decimalString.slice(decimalString.length - 3))
+            return (
+                EnglishModel.encode(thousands) +
+                ' thousand' +
+                (rest
+                    ? (rest < 100 ? ' and ' : ' ') + EnglishModel.encode(rest)
+                    : '')
+            )
         }
-        return 'Three'
+        return 'ERROR'
     },
     decode: (representation: string) => {
+        representation = representation.toLowerCase()
         if (EnglishWordToDecimalDigit.has(representation))
             return EnglishWordToDecimalDigit.get(representation) || 0
 
@@ -72,6 +85,16 @@ const EnglishModel: IModel = {
             const [, hundreds, , rest] = result
             if (hundreds && EnglishWordToDecimalDigit.has(hundreds))
                 sum += (EnglishWordToDecimalDigit.get(hundreds) || 0) * 100
+            if (rest) sum += EnglishModel.decode(rest) // recursive call
+            return sum
+        }
+        result = representation.match(
+            /^([a-z ]+) thousand(( and | )?([a-z ]*))?$/i
+        )
+        if (result) {
+            let sum = 0
+            const [, thousands, , , rest] = result
+            if (thousands) sum += EnglishModel.decode(thousands) * 1000 // recursive call
             if (rest) sum += EnglishModel.decode(rest) // recursive call
             return sum
         }

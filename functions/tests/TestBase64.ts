@@ -2,7 +2,8 @@ import { expect } from 'chai'
 import { converter } from '../src/controllers/corrospondingFunctions'
 import Base64Model from '../src/models/Base64Model'
 
-describe('base64', () => {
+describe('base64', function () {
+    this.timeout(20_000)
     // test encoding decimal numbers into base64 with a known outcome
     it('encode', () => {
         expect(Base64Model.encode(300)).to.equal('4I')
@@ -21,8 +22,8 @@ describe('base64', () => {
 
     // test random numbers by encoding, and then decoding to get the initial value
     it('should revert to itself', () => {
-        for (let i = 0; i < 1000; i++) {
-            const input = Math.round(Math.random() * 1_000_000).toString()
+        for (let i = 0; i < 1_000_000; i++) {
+            const input = i.toString()
             const output = converter(input, 'decimal', 'base64')
             expect(converter(output, 'base64', 'decimal')).to.equal(input)
         }

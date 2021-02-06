@@ -2,7 +2,8 @@ import { expect } from 'chai'
 import { converter } from '../src/controllers/corrospondingFunctions'
 import EnglishModel from '../src/models/EnglishModel'
 
-describe('english', () => {
+describe('english', function () {
+    this.timeout(40_000)
     it('encode', () => {
         expect(EnglishModel.encode(1)).to.equal('one')
         expect(EnglishModel.encode(2)).to.equal('two')
@@ -14,6 +15,15 @@ describe('english', () => {
         expect(EnglishModel.encode(100)).to.equal('one hundred')
         expect(EnglishModel.encode(101)).to.equal('one hundred and one')
         expect(EnglishModel.encode(512)).to.equal('five hundred and twelve')
+        expect(EnglishModel.encode(1000)).to.equal('one thousand')
+        expect(EnglishModel.encode(2020)).to.equal('two thousand and twenty')
+        expect(EnglishModel.encode(10000)).to.equal('ten thousand')
+        expect(EnglishModel.encode(538538)).to.equal(
+            'five hundred and thirty eight thousand five hundred and thirty eight'
+        )
+        expect(EnglishModel.encode(999999)).to.equal(
+            'nine hundred and ninety nine thousand nine hundred and ninety nine'
+        )
     })
     it('decode', () => {
         expect(EnglishModel.decode('one')).to.equal(1)
@@ -58,13 +68,26 @@ describe('english', () => {
             777
         )
         expect(EnglishModel.decode('nine hundred and nineteen')).to.equal(919)
+        expect(EnglishModel.decode('one thousand')).to.equal(1000)
+        expect(EnglishModel.decode('one thousand and one')).to.equal(1001)
+        expect(EnglishModel.decode('one thousand and fifty')).to.equal(1050)
+        expect(
+            EnglishModel.decode('one thousand two hundred and fifty')
+        ).to.equal(1250)
+        expect(
+            EnglishModel.decode('one thousand two hundred and twenty five')
+        ).to.equal(1225)
+        expect(EnglishModel.decode('two thousand five hundred')).to.equal(2500)
+        expect(
+            EnglishModel.decode('ninety nine thousand four hundred and eight')
+        ).to.equal(99408)
     })
     it('convert', () => {
         expect(converter('5', 'decimal', 'english')).to.equal('five')
         expect(converter('five', 'english', 'decimal')).to.equal('5')
     })
     it('should revert to itself', () => {
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 1000000; i++) {
             const input = i.toString()
             const output = converter(input, 'decimal', 'english')
             expect(converter(output, 'english', 'decimal')).to.equal(input)
