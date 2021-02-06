@@ -1,14 +1,19 @@
 import { expect } from 'chai'
-// import { converter } from '../src/controllers/corrospondingFunctions'
+import { converter } from '../src/controllers/corrospondingFunctions'
 import EnglishModel from '../src/models/EnglishModel'
 
 describe('english', () => {
     it('encode', () => {
-        // expect(EnglishModel.encode(1)).to.equal('one')
-        // expect(EnglishModel.encode(2)).to.equal('two')
-        // expect(EnglishModel.encode(3)).to.equal('three')
-        // expect(EnglishModel.encode(4)).to.equal('four')
-        // expect(EnglishModel.encode(5)).to.equal('five')
+        expect(EnglishModel.encode(1)).to.equal('one')
+        expect(EnglishModel.encode(2)).to.equal('two')
+        expect(EnglishModel.encode(3)).to.equal('three')
+        expect(EnglishModel.encode(4)).to.equal('four')
+        expect(EnglishModel.encode(5)).to.equal('five')
+        expect(EnglishModel.encode(14)).to.equal('fourteen')
+        expect(EnglishModel.encode(85)).to.equal('eighty five')
+        expect(EnglishModel.encode(100)).to.equal('one hundred')
+        expect(EnglishModel.encode(101)).to.equal('one hundred and one')
+        expect(EnglishModel.encode(512)).to.equal('five hundred and twelve')
     })
     it('decode', () => {
         expect(EnglishModel.decode('one')).to.equal(1)
@@ -55,14 +60,14 @@ describe('english', () => {
         expect(EnglishModel.decode('nine hundred and nineteen')).to.equal(919)
     })
     it('convert', () => {
-        // expect(converter('5', 'decimal', 'english')).to.equal('five')
-        // expect(converter('five', 'english', 'decimal')).to.equal('5')
+        expect(converter('5', 'decimal', 'english')).to.equal('five')
+        expect(converter('five', 'english', 'decimal')).to.equal('5')
     })
     it('should revert to itself', () => {
-        // for (let i = 0; i < 1000; i++) {
-        //     const input = Math.round(Math.random() * 1_000_000).toString()
-        //     const output = converter(input, 'decimal', 'english')
-        //     expect(converter(output, 'english', 'decimal')).to.equal(input)
-        // }
+        for (let i = 0; i < 1000; i++) {
+            const input = i.toString()
+            const output = converter(input, 'decimal', 'english')
+            expect(converter(output, 'english', 'decimal')).to.equal(input)
+        }
     })
 })

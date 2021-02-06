@@ -1,4 +1,4 @@
-import { IModel } from "./IModel";
+import { IModel } from './IModel'
 
 // convert between base 12 (duodecimal) and decimal
 const DuodecimalModel: IModel = {

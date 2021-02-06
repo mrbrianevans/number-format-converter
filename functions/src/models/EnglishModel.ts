@@ -1,11 +1,41 @@
-import { IModel } from "./IModel";
+import { IModel } from './IModel'
 
 // convert between english words and decimal
 const EnglishModel: IModel = {
     encode: (decimal: number) => {
+        const decimalString = decimal.toString()
+        if (DecimalDigitToEnglishWord.has(decimal))
+            return DecimalDigitToEnglishWord.get(decimal) || 'not found'
+        else if (decimalString.length === 2) {
+            const tens =
+                DecimalDigitToEnglishWord.get(
+                    Number(decimalString.charAt(0)) * 10
+                ) || 0
+            const units =
+                DecimalDigitToEnglishWord.get(
+                    Number(decimalString.charAt(1))
+                ) || 0
+            if (tens === 'ten') return units + 'teen'
+            else return tens + ' ' + units
+        } else if (decimalString.length === 3) {
+            const hundreds = DecimalDigitToEnglishWord.get(
+                Number(decimalString.charAt(0))
+            )
+            const tensunits = EnglishModel.encode(
+                Number(decimalString.slice(1))
+            )
+            return (
+                hundreds +
+                ' hundred' +
+                (decimalString.slice(1) === '00' ? '' : ' and ' + tensunits)
+            )
+        }
         return 'Three'
     },
     decode: (representation: string) => {
+        if (EnglishWordToDecimalDigit.has(representation))
+            return EnglishWordToDecimalDigit.get(representation) || 0
+
         let result: RegExpMatchArray | null
         result = representation.match(
             /^(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fifteen|eighteen)$/i
@@ -59,6 +89,21 @@ DecimalDigitToEnglishWord.set(6, 'six')
 DecimalDigitToEnglishWord.set(7, 'seven')
 DecimalDigitToEnglishWord.set(8, 'eight')
 DecimalDigitToEnglishWord.set(9, 'nine')
+DecimalDigitToEnglishWord.set(10, 'ten')
+DecimalDigitToEnglishWord.set(11, 'eleven')
+DecimalDigitToEnglishWord.set(12, 'twelve')
+DecimalDigitToEnglishWord.set(13, 'thirteen')
+DecimalDigitToEnglishWord.set(15, 'fifteen')
+DecimalDigitToEnglishWord.set(18, 'eighteen')
+DecimalDigitToEnglishWord.set(20, 'twenty')
+DecimalDigitToEnglishWord.set(30, 'thirty')
+DecimalDigitToEnglishWord.set(40, 'forty')
+DecimalDigitToEnglishWord.set(50, 'fifty')
+DecimalDigitToEnglishWord.set(60, 'sixty')
+DecimalDigitToEnglishWord.set(70, 'seventy')
+DecimalDigitToEnglishWord.set(80, 'eighty')
+DecimalDigitToEnglishWord.set(90, 'ninety')
+
 const EnglishWordToDecimalDigit = new Map<string, number>()
 EnglishWordToDecimalDigit.set('one', 1)
 EnglishWordToDecimalDigit.set('two', 2)
