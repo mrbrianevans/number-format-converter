@@ -8,6 +8,7 @@ describe('roman numeral', () => {
     })
     it('decode', () => {
         expect(RomanNumeralModel.decode('CCC')).to.equal(300)
+        expect(RomanNumeralModel.decode('MCMxII')).to.equal(1912)
     })
     it('convert', () => {
         expect(converter('300', 'decimal', 'roman')).to.equal('CCC')

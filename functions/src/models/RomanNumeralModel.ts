@@ -49,28 +49,29 @@ const RomanNumeralModel: IModel = {
     },
 
     decode: (representation: string) => {
+		let inputString = representation.toUpperCase()
         const legend = 'IVXLCDM'
         const arr = [1, 5, 10, 50, 100, 500, 1000]
         let sum = 0
 
-        while (representation) {
+        while (inputString) {
             if (
-                !!representation[1] &&
-                legend.indexOf(representation[0]) <
-                    legend.indexOf(representation[1])
+                inputString.length > 1 &&
+                legend.indexOf(inputString[0]) <
+                    legend.indexOf(inputString[1])
             ) {
                 sum +=
-                    arr[legend.indexOf(representation[1])] -
-                    arr[legend.indexOf(representation[0])]
-                representation = representation.substring(
+                    arr[legend.indexOf(inputString[1])] -
+                    arr[legend.indexOf(inputString[0])]
+                inputString = inputString.substring(
                     2,
-                    representation.length
+                    inputString.length
                 )
             } else {
-                sum += arr[legend.indexOf(representation[0])]
-                representation = representation.substring(
+                sum += arr[legend.indexOf(inputString[0])]
+                inputString = inputString.substring(
                     1,
-                    representation.length
+                    inputString.length
                 )
             }
         }
