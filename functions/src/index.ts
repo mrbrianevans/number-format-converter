@@ -61,20 +61,12 @@ convert.post('/', (request: any, response: any) => {
                 )
                 // Send response
                 if (
+                    converter(answer, request.body.outputFormat, 'decimal') ===
                     converter(
-                        answer,
-                        request.body.outputFormat,
-                        request.body.inputFormat
-                    ).toLowerCase() ===
-                        request.body.inputNumber.toLowerCase() ||
-                    (request.body.inputFormat === 'hexadecimal' &&
-                        '0x' +
-                            converter(
-                                answer,
-                                request.body.outputFormat,
-                                request.body.inputFormat
-                            ).toLowerCase() ===
-                            request.body.inputNumber.toLowerCase())
+                        request.body.inputNumber,
+                        request.body.inputFormat,
+                        'decimal'
+                    )
                 ) {
                     functions.logger.log(
                         `Converted ${request.body.inputNumber} from ${request.body.inputFormat} to ${answer} in ${request.body.outputFormat}`
