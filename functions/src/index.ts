@@ -60,13 +60,14 @@ convert.post('/', (request: any, response: any) => {
                     request.body.outputFormat
                 )
                 // Send response
-                if (
-                    converter(answer, request.body.outputFormat, 'decimal') ===
-                    converter(
+				const answerDecimal = converter(answer, request.body.outputFormat, 'decimal')
+				const inputDecimal = converter(
                         request.body.inputNumber,
                         request.body.inputFormat,
                         'decimal'
                     )
+                if (
+                    answerDecimal === inputDecimal
                 ) {
                     functions.logger.log(
                         `Converted ${request.body.inputNumber} from ${request.body.inputFormat} to ${answer} in ${request.body.outputFormat}`
@@ -74,7 +75,7 @@ convert.post('/', (request: any, response: any) => {
                     response.status(200).json({ answer: answer })
                     return
                 } else {
-                    errorMessages.push('Failed to reverse conversion')
+                    errorMessages.push(`Failed to reverse conversion: ${answerDecimal} != ${inputDecimal}`)
                 }
             } catch (e) {
                 // error occurred in calculation or sending a response. Probably in calculation
