@@ -4,7 +4,7 @@ Open source project to convert numbers between different formats.
 ## Tech summary
 **Backend:** nodeJS , firebase-functions
 
-**Frontent:** ReactJS , Bootstrap
+**Frontent:** ReactJS
 
 ## Formats
 - binary
