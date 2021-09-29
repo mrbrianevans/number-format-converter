@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <AppWrapper className='app'>
       <FillPage>
         <PageHeader>Number Format Converter</PageHeader>
-        <PageHeader2>
+        <RepositoryActions>
           <GitHubButton
             href='https://github.com/mrbrianevans/number-format-converter'
             data-color-scheme='no-preference: light; light: dark; dark: light;'
@@ -32,7 +32,7 @@ const App: React.FC = () => {
           >
             Issue
           </GitHubButton>
-        </PageHeader2>
+        </RepositoryActions>
         <hr />
 
         <Converter />
@@ -61,7 +61,7 @@ const PageHeader = styled.h1`
   text-transform: uppercase;
   letter-spacing: 2px;
 `
-const PageHeader2 = styled.h1`
+const RepositoryActions = styled.div`
   display: flex;
   text-align: center;
   flex-direction: column;
