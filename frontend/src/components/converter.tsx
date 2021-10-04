@@ -5,6 +5,7 @@ import { DropDown } from './DropDown'
 
 // in future, this list should be retrieved from the API
 import { formats } from './helpers/utilities'
+import ErrorIcon from './icons/ErrorIcon'
 
 const Converter: React.FC = () => {
   const [inputNumber, updateInputNumber] = useState<string>('')
@@ -13,12 +14,13 @@ const Converter: React.FC = () => {
   const [fromFormat, setFromFormat] = useState<string>('decimal')
   const [toFormat, setToFormat] = useState<string>('base64')
 
+  const [errors, setErrors] = useState<string[]>([])
+
   useEffect(() => {
-    if (inputNumber !== undefined)
-      convert(inputNumber, fromFormat, toFormat).then((response) => {
-        if (response.answer) setOutputNumber(response.answer)
-        // else if (response.errors) console.log(response.errors) - line is only needed in dev-debug mode
-      })
+    convert(inputNumber, fromFormat, toFormat).then((response) => {
+      if (response.answer) setOutputNumber(response.answer)
+      setErrors(response.errors ?? [])
+    })
   }, [inputNumber, fromFormat, toFormat])
 
   const handleTextAreaChange = (e: any) => {
@@ -61,6 +63,14 @@ const Converter: React.FC = () => {
           />
         </Form>
       </Container>
+      <Errors>
+        {errors.map((error) => (
+          <div>
+            <ErrorIcon fill={'crimson'} />
+            {error}
+          </div>
+        ))}
+      </Errors>
     </>
   )
 }
@@ -101,6 +111,21 @@ const Container = styled.div`
   gap: 20px;
   justify-content: center;
   margin: 50px 0;
+`
+
+const Errors = styled.div`
+  display: grid;
+  gap: 0.5rem;
+  width: 860px;
+  margin: 1rem auto;
+  Div {
+    border: 2px solid crimson;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
 `
 
 export default Converter
